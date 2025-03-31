@@ -1,2 +1,6 @@
 my_env
 __pycache__directory
+__pycache__
+.pytest_cache
+/tests/.pytest_cache
+/tests/__pycache__
