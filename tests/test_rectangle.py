@@ -26,10 +26,8 @@ def test_create_rectangle(get_rectangle_sides, sides):
                               'negative int',
                               'negative float'])
 def test_create_rectangle_wrong_value(side_a, side_b):
-    try:
+    with pytest.raises(ValueError):
         square = Rectangle(side_a, side_b)
-    except ValueError:
-        pass
 
 
 @pytest.mark.regress
@@ -73,7 +71,5 @@ def test_rectangle_add_nonfigure(get_rectangle_sides):
     side_a, side_b = get_rectangle_sides(sides='integer')
     rectangle = Rectangle(side_a, side_b)
     non_figure = 'non_figure'
-    try:
+    with pytest.raises(ValueError):
         rectangle.add_area(non_figure)
-    except ValueError:
-        pass
