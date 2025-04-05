@@ -26,10 +26,8 @@ def test_create_square(get_square_side, side):
                               'negative int',
                               'negative float'])
 def test_create_square_wrong_value(side):
-    try:
+    with pytest.raises(ValueError):
         square = Square(side)
-    except ValueError:
-        pass
 
 
 @pytest.mark.regress
@@ -73,7 +71,6 @@ def test_square_add_nonfigure(get_square_side):
     side = get_square_side(side='integer')
     square = Square(side=side)
     non_figure = 'non_figure'
-    try:
+    with pytest.raises(ValueError):
         square.add_area(non_figure)
-    except ValueError:
-        pass
+

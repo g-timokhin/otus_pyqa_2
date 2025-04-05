@@ -29,10 +29,8 @@ def test_create_triangle(get_triangle_sides, sides):
                               'negative ints',
                               'negative floats'])
 def test_create_triangle_wrong_value(side_a, side_b, side_c):
-    try:
+    with pytest.raises(ValueError):
         triangle = Triangle(side_a, side_b, side_c)
-    except ValueError:
-        pass
 
 
 @pytest.mark.regress
@@ -42,10 +40,8 @@ def test_create_triangle_wrong_value(side_a, side_b, side_c):
                          [(1, 2, 3), (1.1, 2.1, 3.1)],
                          ids=['int sides', 'float sides'])
 def test_create_impossible_triangle(side_a, side_b, side_c):
-    try:
+    with pytest.raises(ValueError):
         triangle = Triangle(side_a, side_b, side_c)
-    except ValueError:
-        pass
 
 
 @pytest.mark.regress
@@ -87,7 +83,6 @@ def test_triangle_add_nonfigure(get_triangle_sides):
     side_a, side_b, side_c = get_triangle_sides(sides='integer')
     triangle = Triangle(side_a, side_b, side_c)
     non_figure = 'non_figure'
-    try:
+    with pytest.raises(ValueError):
         triangle.add_area(non_figure)
-    except ValueError:
-        pass
+

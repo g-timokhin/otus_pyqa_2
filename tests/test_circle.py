@@ -21,10 +21,8 @@ def test_create_circle(radius, get_circle_radius):
                          ['k', (-1), (-1.5)],
                          ids=['string', 'negative int', 'negative float'])
 def test_create_circle_wrong_value(radius):
-    try:
+    with pytest.raises(ValueError):
         circle = Circle(radius)
-    except ValueError:
-        pass
 
 
 @pytest.mark.regress
@@ -68,7 +66,5 @@ def test_circle_add_nonfigure(get_circle_radius):
     radius = get_circle_radius(radius='integer')
     circle = Circle(radius)
     non_figure = 'non_figure'
-    try:
+    with pytest.raises(ValueError):
         circle.add_area(non_figure)
-    except ValueError:
-        pass
